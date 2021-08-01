@@ -1,3 +1,5 @@
+![example workflow](https://github.com/Komeyama/github-actions-study-ios/actions/workflows/ci.yml/badge.svg)
+
 # github-actions-study-ios
 
 This is for studying the github actions of the iOS repository where the submodule was introduced.
