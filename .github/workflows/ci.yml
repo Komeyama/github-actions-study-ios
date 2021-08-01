@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: SSH Setting and update submodule
+      env:
+        TOKEN: ${{ secrets.SUBMODULE_SSH_KEY }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo -e "$TOKEN" > ~/.ssh/id_rsa
+        sudo chmod 600 ~/.ssh/id_rsa
+        git submodule update --init --force --recursive
+    - name: Show Xcode version
+      run: xcodebuild -version
+    - name: init CocoaPods
+      run: pod install
+    - name: Build
+      run: |
+        xcodebuild
+        -configuration Debug
+        -workspace github-actions-study-ios.xcworkspace
+        -scheme 'github-actions-study-ios'
+        -sdk iphonesimulator
+        build
