@@ -1,0 +1,6 @@
+framework module Pods_github_actions_study_iosTests {
+  umbrella header "Pods-github-actions-study-iosTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
