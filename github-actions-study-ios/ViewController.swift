@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let sample = SampleUtility()
+        print(sample.say("Hello!"))
     }
 
 
