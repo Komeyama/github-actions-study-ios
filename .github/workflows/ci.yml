@@ -23,11 +23,11 @@ jobs:
       run: xcodebuild -version
     - name: init CocoaPods
       run: pod install
-    - name: Build
+    - name: unit test
       run: |
-        xcodebuild
-        -configuration Debug
-        -workspace github-actions-study-ios.xcworkspace
-        -scheme 'github-actions-study-ios'
-        -sdk iphonesimulator
-        build
+        xcodebuild \
+        -workspace github-actions-study-ios.xcworkspace \
+        -scheme "github-actions-study-ios" \
+        -sdk iphonesimulator \
+        -destination "platform=iOS Simulator,name=iPhone 8" \
+        test
